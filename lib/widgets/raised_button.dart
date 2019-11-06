@@ -29,7 +29,7 @@ class RaisedGradientButton extends StatelessWidget {
           blurRadius: 1.5,
         ),
       ],
-      borderRadius: BorderRadius.all(Radius.circular(20.0))
+      borderRadius: BorderRadius.all(Radius.circular(15.0))
       ),
       
       child: Material(

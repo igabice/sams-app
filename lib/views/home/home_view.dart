@@ -100,5 +100,5 @@ class HomeState extends State<Home> implements HomeContract {
   }
 
   @override
-  void showError(String message) {}
+  void showError(var message) {}
 }

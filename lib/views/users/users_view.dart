@@ -205,7 +205,7 @@ class UserListState extends State<UserList> implements UsersContract {
   }
 
   @override
-  void showError(String message) {
+  void showError(var message) {
     print(message);
   }
 

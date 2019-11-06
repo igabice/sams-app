@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flushbar/flushbar.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:sc_app/styles/app_colors.dart';
 import 'package:sc_app/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,16 +13,16 @@ class MyApp {
   MyApp.internal();
 
 
-  void showToast(String msg, context, {int duration, int gravity}) {
+  void showToast(String title, String msg, context, {IconData icon, Color color, int duration, int gravity}) {
     Flushbar(
-      title: 'This action is prohibited',
+      title: title,
       message: msg,
       icon: Icon(
-        Icons.info_outline,
+        (icon != null ? icon: Icons.info_outline),
         size: 28,
-        color: Colors.blue.shade300,
+        color: (color != null ? color: AppColors.green),
       ),
-      leftBarIndicatorColor: Colors.blue.shade300,
+      leftBarIndicatorColor: (color != null ? color: AppColors.green),
       duration: Duration(seconds: (duration != null ? duration : 3)),
     )..show(context);
   }

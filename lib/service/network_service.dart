@@ -15,6 +15,7 @@ class NetworkService {
   }
 
   Map<String, dynamic> convertJsonToMap(String response) {
+    print("response: "+response);
     return json.decode(response);
   }
 

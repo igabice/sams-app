@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sc_app/my_app.dart';
 import 'package:sc_app/styles/app_colors.dart';
 import 'package:sc_app/styles/strings.dart';
 import 'package:sc_app/styles/styles.dart';
@@ -93,6 +94,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
         maxLines: 1,
         style: Style.formFieldStyle,
         obscureText: true,
+        
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(12),
           focusColor: Colors.white,
@@ -101,6 +103,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
           hintText: "Enter your password",
           labelText: "Password",
         ),
+        
       ),
     );
   }
@@ -170,8 +173,9 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
   }
 
   @override
-  void showError(String message) {
+  void showError(var message) {
     Navigator.of(context).pop();
+    MyApp.internal().showToast("Error","$message", context, icon: Icons.info_outline, color: Colors.red.shade300);
     print("Error: $message");
   }
 

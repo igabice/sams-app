@@ -1,3 +1,3 @@
 abstract class BaseContract {
-  void showError(String message);
+  void showError(var message);
 }

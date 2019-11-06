@@ -6,7 +6,7 @@ class AppColors {
   static final green =  HexColor('#388E3C');
   
   static final yellow2 =  HexColor('#FF6700');
-  static final lightGreen =  HexColor('#DCE775');
+  static final lightGreen =  HexColor('#7CB342');
   
   
 }
