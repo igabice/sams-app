@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sc_app/model/user.dart';
-//import 'package:sc_app/views/detail/camera_view.dart';
-import 'package:sc_app/views/map/map_view.dart';
 
 class Detail extends StatefulWidget {
   static const String routeName = '/Detail';

@@ -38,7 +38,7 @@ class UsersRepositoryImpl implements UsersRepository {
     final contactsBody = _decoder.convert(jsonBody);
     final List contacts = contactsBody['results'];
 
-    return contacts.map((contact) => new User.fromJson(contact)).toList();
+    return contacts.map((contact) => new User.fromJson(contact, "")).toList();
   }
 
   @override
@@ -52,10 +52,10 @@ class UsersRepositoryImpl implements UsersRepository {
         throw new RequestException("Login error, code: ${res.statusCode}, ${res.reasonPhrase}");
       }
       final String token = _networkService.convertJsonToMap(res.body)["token"];
-      final User user = new User.fromJson(_networkService.convertJsonToMap(res.body)["profile"]);
-      print(user.getFullName());
-      Preferences.setUser(user);
-      return Preferences.setToken(token);
+      final User user = new User.fromJson(_networkService.convertJsonToMap(res.body)["profile"], token);
+      print(user.toJson().toString());
+      print(user.lastname);
+       return Preferences.setUser(user);
     });
   }
 

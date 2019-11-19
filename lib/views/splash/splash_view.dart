@@ -8,6 +8,7 @@ import 'package:sc_app/styles/styles.dart';
 import 'package:sc_app/util/preferences.dart';
 import 'package:sc_app/views/home/home_view.dart';
 import 'package:sc_app/views/login/login_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -25,11 +26,14 @@ class SplashState extends State<Splash> {
 
   splashTimeout() async {
     var _duration = new Duration(seconds: 3);
+
+    
     return new Timer(_duration, navigationPage);
   }
 
   void navigationPage() async {
     String token = await Preferences.getToken();
+
     if (null == token || token.isEmpty)
       Navigator.of(context).pushReplacementNamed(Login.routeName);
     else

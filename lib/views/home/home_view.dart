@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sc_app/views/detail/detail_view.dart';
 import 'package:sc_app/views/home/home_contract.dart';
 import 'package:sc_app/views/home/home_presenter.dart';
 import 'package:sc_app/views/login/login_view.dart';
 import 'package:sc_app/views/place_holder.dart';
 import 'package:sc_app/views/profile/profile_view.dart';
-import 'package:sc_app/views/profile_edit/profile_edit_view.dart';
 import 'package:sc_app/views/users/users_view.dart';
 
 import '../../my_app.dart';

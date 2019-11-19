@@ -9,6 +9,7 @@ import 'package:sc_app/util/preferences.dart';
 import 'package:sc_app/views/profile/profile_contract.dart';
 import 'package:sc_app/views/profile/profile_presenter.dart';
 import 'package:sc_app/views/profile_edit/profile_edit_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key key}) : super(key: key);
@@ -22,22 +23,36 @@ class _ProfileScreenState extends State<ProfileScreen> implements ProfileContrac
   ProfilePresenter _presenter;
   User user;
   var name = "User Name";
+  SharedPreferences sharedPrefs;
 
   @override
   void initState() {
     super.initState();
     _presenter = ProfilePresenter(this);
     _presenter.setUser(user);
-    getName();
-  }
+    SharedPreferences.getInstance().then((prefs){
+      setState(() {
+       sharedPrefs = prefs; 
 
-
-void getName() async {
-    String token = await Preferences.getFullName();
-    setState(() {
-     name = name+token; 
+      name = sharedPrefs.getString('LASTNAME');
+  // print(sharedPrefs.getString('USER_ID')); print(" = USER_ID");
+  // print(sharedPrefs.getString('EMAIL')); print(" = EMAIL");
+  // print(sharedPrefs.getString('PHONE')); print(" = PHONE");
+  // print(sharedPrefs.getString('IMAGE')); print(" = IMAGE");
+  // print(sharedPrefs.getString('DATE_OF_BIRTH')); print(" = DATE_OF_BIRTH");
+  // print(sharedPrefs.getString('NAME')); print(" = NAME");
+  // print(sharedPrefs.getString('LASTNAME')); print(" = LASTNAME");
+  // print(sharedPrefs.getString('OTHERNAME')); print(" = OTHERNAME");
+  // print(sharedPrefs.getString('ADDRESS')); print(" = ADDRESS");
+  // print(sharedPrefs.getString('ROLE_ID')); print(" = ROLE_ID");
+  // print(sharedPrefs.getString('ACTIVE_CLASS')); print(" = ACTIVE_CLASS");
+  // print(sharedPrefs.getString('SCHOOL_ID')); print(" = SCHOOL_ID");
+  // print(sharedPrefs.getString('IS_ACTIVE')); print(" = IS_ACTIVE");
+  // print(sharedPrefs.getString('PREF_TOKEN')); print(" = PREF_TOKEN");
+      });
     });
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -8,12 +8,12 @@ class ProfilePresenter {
   ProfileContract _view;
   UsersRepository _usersRepository;
 
-  ProfilePresenter(this._view) {
+  ProfilePresenter(_view) {
       _usersRepository = new Injector().usersRepository;
   }
 
    setUser(User user) async {
-    user = (await _usersRepository.getUser()) as User;
+    user = (await _usersRepository.getUser()) ;
   }
 
   setName(String user)  async {

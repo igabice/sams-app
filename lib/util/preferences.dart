@@ -3,8 +3,7 @@ import 'package:sc_app/model/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preferences {
-
-
+  
   static String _token = "PREF_TOKEN";
   static String _id = "USER_ID";
   static String _email = "EMAIL";
@@ -26,7 +25,7 @@ class Preferences {
   }
   static Future<String> getFullName() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_name);
+    return prefs.getString(_lastname);
   }
 
   static Future<User> getName() async {
@@ -64,6 +63,8 @@ class Preferences {
       prefs.setString(_lastname, user.lastname);
       prefs.setString(_othername, user.othername);
       prefs.setString(_active, user.isActive);
+      prefs.setString(_token, user.token);
+      
     });
     
   }    
@@ -73,12 +74,72 @@ class Preferences {
       return prefs.setString(_token, token);
     });
   }    
-
-  static Observable<void> set(String token) {
+  static Observable<void> setId(String id) {
     return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
-      return prefs.setString(_token, token);
+      return prefs.setString(_id, id);
     });
-  }    
+  } 
+  static Observable<void> setEmail(String email) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_email, email);
+    });
+  }
+  static Observable<void> setPhone(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_phone, string);
+    });
+  } 
+  static Observable<void> setImage(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_image, string);
+    });
+  } 
+  static Observable<void> setDob(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_dob, string);
+    });
+  } 
+  static Observable<void> setName(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_name, string);
+    });
+  } 
+  static Observable<void> setLastname(String string) {
+    print("pref: "+string);
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_lastname, string);
+    });
+  } 
+  static Observable<void> setOthername(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_othername, string);
+    });
+  } 
+  static Observable<void> setAddress(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_address, string);
+    });
+  } 
+  static Observable<void> setRoleId(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_roleId, string);
+    });
+  } 
+  static Observable<void> setActiveClass(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_activeClass, string);
+    });
+  } 
+  static Observable<void> setSchoolId(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_schoolId, string);
+    });
+  } 
+  static Observable<void> setActive(String string) {
+    return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {
+      return prefs.setString(_active, string);
+    });
+  } 
 
   // static Observable<void> setToken(String token) {
   //   return Observable.fromFuture(SharedPreferences.getInstance()).map((prefs) {

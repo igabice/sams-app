@@ -82,17 +82,17 @@ class _EditProfileState extends State<EditProfile> implements ProfileEditContrac
           Card(
             margin: EdgeInsets.only(top:25, left: 7, right: 7, bottom: 7),
             elevation: 1,
-            child: EditText (nameController, "Full name", TextInputType.text ),
+            child: editText (nameController, "Full name", TextInputType.text ),
           )
 ,          Card(
             margin: EdgeInsets.all(7),
             elevation: 1,
-            child: EditText (emailController, "Email Address", TextInputType.text ),
+            child: editText (emailController, "Email Address", TextInputType.text ),
           ),
           Card(
             margin: EdgeInsets.all(7),
             elevation: 1,
-            child: EditText (phoneController, "Phone number", TextInputType.phone ),
+            child: editText (phoneController, "Phone number", TextInputType.phone ),
           ),
           Padding(
             padding: EdgeInsets.all(10),
@@ -121,7 +121,7 @@ class _EditProfileState extends State<EditProfile> implements ProfileEditContrac
     );
   }
 
-  Widget EditText (controller, hint, inputType ){
+  Widget editText (controller, hint, inputType ){
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Column(

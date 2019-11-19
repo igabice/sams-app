@@ -13,15 +13,16 @@ class User {
   String roleId;
   String schoolId;
   String activeClass;
+  String token;
 
   User({ 
     this.id, this.name, this.othername, this.lastname, this.email, this.phone, this.image, this.dateOfBirth, 
     this.address, this.roleId, this.activeClass, this.schoolId, this.isActive});
 
-  User.fromJson(Map<String, dynamic> json) {
+  User.fromJson(Map<String, dynamic> json, String ttoken) {
     id = json['id'];
     address = json['address'];
-    name = json['name'] ;
+    isActive = json['active'] ;
     title = json['title'];
     name = json['name'];
     lastname = json['lastname'];
@@ -33,6 +34,7 @@ class User {
     roleId = json['role_id'];
     activeClass = json['active_class'];
     dateOfBirth = json['dob'];
+    token = ttoken;
   }
 
   Map<String, dynamic> toJson() {
@@ -43,7 +45,6 @@ class User {
     data['title'] = this.title;
     data['name'] = this.name;
     data['lastname'] = this.lastname;
-    data['lastname'] = this.lastname;
     data['email'] = this.email;
     data['phone'] = this.phone;
     data['image'] = this.image;
@@ -51,6 +52,7 @@ class User {
     data['role_id'] = this.roleId;
     data['active_class'] = this.activeClass;
     data['dob'] = this.dateOfBirth;
+    data['token'] = this.token;
     
     return data;
   }
