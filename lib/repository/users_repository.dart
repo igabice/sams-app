@@ -11,10 +11,12 @@ import 'package:http/http.dart' as http;
 import 'package:rxdart/rxdart.dart';
 
 abstract class UsersRepository {
+  
   Future<List<User>> fetchUsers(int page);
 
   Observable<void> login(String email, String password);
   Observable<void> logout();
+  Future<User> getUser();
 }
 
 class UsersRepositoryImpl implements UsersRepository {
@@ -46,23 +48,62 @@ class UsersRepositoryImpl implements UsersRepository {
     return Observable.fromFuture(_networkService.post(ApiEndPoint.LOGIN, data))
         .flatMap((res) {
       if (res.statusCode != 200 || null == res.statusCode) {
-        throw new RequestException(
-            "Login error, code: ${res.statusCode}, ${res.reasonPhrase}");
+        print('Error: ${res.body}');
+        throw new RequestException("Login error, code: ${res.statusCode}, ${res.reasonPhrase}");
       }
-
       final String token = _networkService.convertJsonToMap(res.body)["token"];
+      final User user = new User.fromJson(_networkService.convertJsonToMap(res.body)["profile"]);
+      print(user.getFullName());
+      Preferences.setUser(user);
       return Preferences.setToken(token);
     });
   }
 
-  // Future<FacebookLoginResult> handleFacebookLogin() async {
+
+  // Future<User> handleFacebookLogin() async {
   //   var facebookLogin = FacebookLogin();
   //   var facebookLoginResult = facebookLogin.logInWithReadPermissions(['email']);
   //   return facebookLoginResult;
   // }
 
   @override
+  Future<Observable<void>> updateProfile(String firstname, String lastname, String phone, String address ) async {
+    String token = await Preferences.getToken();
+
+    var body = jsonEncode({ "firstname": firstname, "lastname": lastname, "phone": phone, "address": address });
+    print(ApiEndPoint.GET_USER);
+    return Observable.fromFuture(_networkService.postData(ApiEndPoint.GET_USER, 
+    headers: {'Accept' : 'application/json', 'Authorization' : "Bearer "+ token},
+    body: body)).flatMap((res) {
+      print(res.toString());
+      if(res["error"]) throw new Exception(res["error_msg"]);
+      //return new User.map(res["user"]);
+    });
+  }
+
+  // @override
+  // Observable<void> updateProfile(String firstname, String lastname, String phone, String address ) {
+  //   Map data = {'firstname': firstname, 'lastname': lastname, 'phone': phone, 'address': address};
+
+  //   return Observable.fromFuture(_networkService.post(ApiEndPoint.EDIT_PROFILE, data))
+  //       .flatMap((res) {
+  //     if (res.statusCode != 200 || null == res.statusCode) {
+  //       print('Error: ${res.body}');
+  //       throw new RequestException("Login error, code: ${res.statusCode}, ${res.reasonPhrase}");
+  //     }
+  //     final String token = _networkService.convertJsonToMap(res.body)["token"];
+  //     print(res.body);
+  //     return Preferences.setToken(token);
+  //   });
+  // }
+
+  @override
   Observable<void> logout() {
     return Preferences.clear();
+  }
+
+  @override
+  Future<User> getUser()  {
+    return  Preferences.getName();
   }
 }

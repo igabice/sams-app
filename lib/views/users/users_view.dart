@@ -219,14 +219,14 @@ class UserListState extends State<UserList> implements UsersContract {
 class UserItem extends ListTile {
   UserItem({User user, GestureTapCallback onTap, BuildContext context})
       : super(
-            title: new Text(user.name.getFullName()),
+            title: new Text(user.getFullName()),
             subtitle: new Text(user.email),
             leading: new Container(
                 width: 60.0,
                 height: 60.0,
                 decoration: new BoxDecoration(
                   image: new DecorationImage(
-                      image: NetworkImage(user.picture.thumbnail),
+                      image: NetworkImage(user.image),
                       fit: BoxFit.cover),
                   borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
                   border: new Border.all(

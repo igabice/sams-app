@@ -36,8 +36,8 @@ class LoginForm extends StatefulWidget {
 
 class LoginFormState extends State<LoginForm> implements LoginContract {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController(text:"admin@school.com");
+  final _passwordController = TextEditingController(text: "admin1234");
 
   LoginPresenter _presenter;
   bool isLoggedIn = false;
@@ -115,6 +115,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
       child: RaisedGradientButton(
                           onPressed: () {
                           if (_formKey.currentState.validate()) {
+                            //checkConnectivity(context);
                             showLoading();
                             _presenter.login(_emailController.text, _passwordController.text);
                           }
@@ -175,8 +176,8 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
   @override
   void showError(var message) {
     Navigator.of(context).pop();
-    MyApp.internal().showToast("Error","$message", context, icon: Icons.info_outline, color: Colors.red.shade300);
-    print("Error: $message");
+    MyApp.internal().showToast("Login Error","$message", context, icon: Icons.info_outline, color: Colors.red.shade300);
+    print("Login Error: $message");
   }
 
   @override

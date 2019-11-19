@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:sc_app/views/detail/detail_view.dart';
 import 'package:sc_app/views/home/home_contract.dart';
 import 'package:sc_app/views/home/home_presenter.dart';
 import 'package:sc_app/views/login/login_view.dart';
 import 'package:sc_app/views/place_holder.dart';
+import 'package:sc_app/views/profile/profile_view.dart';
+import 'package:sc_app/views/profile_edit/profile_edit_view.dart';
 import 'package:sc_app/views/users/users_view.dart';
+
+import '../../my_app.dart';
 
 class Home extends StatefulWidget {
   static const String routeName = '/Home';
@@ -20,7 +25,7 @@ class HomeState extends State<Home> implements HomeContract {
   final List<Widget> _children = [
     UserList(),
     PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green),
+    ProfileScreen(),
   ];
 
   void onTabTapped(int index) {
@@ -85,7 +90,7 @@ class HomeState extends State<Home> implements HomeContract {
       currentIndex: _currentIndex,
       items: [
         BottomNavigationBarItem(
-            icon: new Icon(Icons.group), title: new Text('Users')),
+            icon: new Icon(Icons.group), title: new Text('Students')),
         BottomNavigationBarItem(
             icon: new Icon(Icons.list), title: new Text('Resources')),
         BottomNavigationBarItem(
@@ -100,5 +105,8 @@ class HomeState extends State<Home> implements HomeContract {
   }
 
   @override
-  void showError(var message) {}
+  void showError(var message) {
+    MyApp.internal().showToast("Login Error","$message", context, icon: Icons.info_outline, color: Colors.red.shade300);
+    print("Home Error: $message");
+  }
 }

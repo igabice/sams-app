@@ -5,4 +5,6 @@ class AppStrings {
   final appName = "School Canal";
   final editProfile = "Edit Profile";
   final login = "Login";
+
+  String get edit_profile => "null";
 }

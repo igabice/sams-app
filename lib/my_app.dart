@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flushbar/flushbar.dart';
 import 'dart:async';
@@ -26,6 +27,17 @@ class MyApp {
       duration: Duration(seconds: (duration != null ? duration : 3)),
     )..show(context);
   }
+
+Future checkConnectivity(BuildContext context) async {
+  try{
+    final result = await InternetAddress.lookup('google.com');
+    if(result.isNotEmpty && result[0].rawAddress.isNotEmpty){
+      print('connected');
+    }
+  } on SocketException catch (_){
+    this.showToast("Connection Error", "Please check your internet connection.", context, color: Colors.red);
+  }
+}
 
   void startPage(ctx, page){
     Navigator.of(ctx).push(new MaterialPageRoute( builder: (BuildContext context) => page));

@@ -22,7 +22,7 @@ class _DetailState extends State<Detail> {
         body: ListView(
       children: <Widget>[
         Image.network(
-          widget.user.picture.large,
+          widget.user.image,
           height: 240.0,
           fit: BoxFit.cover,
         ),
@@ -54,7 +54,7 @@ class _DetailState extends State<Detail> {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    widget.user.name.getFullName(),
+                    widget.user.getFullName(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -130,7 +130,7 @@ class _DetailState extends State<Detail> {
                   return Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MapView(widget.user.location),
+                       // builder: (context) => MapView(widget.user.location),
                       ));
                 }
                 break;

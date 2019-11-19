@@ -24,7 +24,7 @@ class UserContent extends StatelessWidget {
             width: 92.0,
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                image: NetworkImage(user.picture.large),
+                image: NetworkImage(user.image),
                 fit: BoxFit.cover,
               ),
               borderRadius: new BorderRadius.all(new Radius.circular(50.0)),
@@ -59,7 +59,7 @@ class UserContent extends StatelessWidget {
             horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
           new Container(height: 4.0),
-          new Text(user.name.getFullName(), style: Style.titleTextStyle),
+          new Text(user.getFullName(), style: Style.titleTextStyle),
           new Separator(),
           new Row(
             children: <Widget>[
