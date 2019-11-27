@@ -7,11 +7,17 @@ import 'package:sc_app/widgets/raised_button.dart';
 //import 'package:rflutter_alert/rflutter_alert.dart';
 
 class EditProfile extends StatefulWidget {
+  
+  final String user;
+  
+  const EditProfile({Key key, this.user}) : super(key: key);
+  
   @override
   _EditProfileState createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> implements ProfileEditContract {
+  
   var coinSymbol = "BTC";
   BuildContext ctx;
   

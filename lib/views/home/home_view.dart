@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sc_app/styles/styles.dart';
+import 'package:sc_app/views/driver/view_route/route_view.dart';
 import 'package:sc_app/views/home/home_contract.dart';
 import 'package:sc_app/views/home/home_presenter.dart';
 import 'package:sc_app/views/login/login_view.dart';
@@ -21,10 +23,12 @@ class HomeState extends State<Home> implements HomeContract {
   HomePresenter _presenter;
   int _currentIndex = 0;
   final List<Widget> _children = [
-    UserList(),
+    BusRouteView(),
     PlaceholderWidget(Colors.deepOrange),
-    ProfileScreen(),
+    ProfileScreen(key: PageStorageKey('Page2'),),
   ];
+
+  final PageStorageBucket bucket = PageStorageBucket();
 
   void onTabTapped(int index) {
     setState(() {
@@ -41,7 +45,7 @@ class HomeState extends State<Home> implements HomeContract {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Home')),
+        appBar: AppBar(title: Text('Home', style: Style.headerTextStyle,)),
         body: _children[_currentIndex],
         drawer: setupDrawerWidget(context),
         bottomNavigationBar: setupBottomNavigationBar());

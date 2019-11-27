@@ -39,9 +39,13 @@ dependencies:
   shimmer: ^0.0.6
   #google_maps_flutter: ^0.0.3+3
   #location: ^1.4.1
-  geolocator: ^2.1.0
+  #geolocator: ^2.1.0
   permission_handler: 2.1.0
   rflutter_alert: ^1.0.2
+  data_tables: ^1.0.1
+  intent: ^1.1.0
+  provider: ^2.0.1
+  flutter_easyrefresh: ^2.0.4
 
 
 dev_dependencies:

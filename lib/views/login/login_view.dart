@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sc_app/constants/routing_constant.dart';
 import 'package:sc_app/my_app.dart';
 import 'package:sc_app/styles/app_colors.dart';
 import 'package:sc_app/styles/strings.dart';
@@ -169,7 +170,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
   @override
   void onLoginSuccess() {
     Navigator.of(context).pop();
-    Navigator.of(context).pushReplacementNamed(Home.routeName);
+    Navigator.pushNamed(context, RouteConstant.HOME);
   }
 
   @override

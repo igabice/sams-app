@@ -3,6 +3,7 @@ import 'dart:convert';
 //import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:sc_app/api_endpoint.dart';
 import 'package:sc_app/di/injection.dart';
+import 'package:sc_app/model/BusRoute.dart';
 import 'package:sc_app/model/user.dart';
 import 'package:sc_app/service/network_service.dart';
 import 'package:sc_app/util/preferences.dart';
@@ -13,6 +14,7 @@ import 'package:rxdart/rxdart.dart';
 abstract class UsersRepository {
   
   Future<List<User>> fetchUsers(int page);
+  Future<List<BusRoute>> fetchRoutes();
 
   Observable<void> login(String email, String password);
   Observable<void> logout();
@@ -39,6 +41,22 @@ class UsersRepositoryImpl implements UsersRepository {
     final List contacts = contactsBody['results'];
 
     return contacts.map((contact) => new User.fromJson(contact, "")).toList();
+  }
+
+  @override
+  Future<List<BusRoute>> fetchRoutes() async {
+    final response = await http.get(ApiEndPoint.BUSES);
+    var statusCode = response.statusCode;
+    var jsonBody = response.body;
+
+    if (statusCode != 200 || null == statusCode) {
+      throw new RequestException( "Cannnot fecth data, code: $statusCode, ${response.reasonPhrase}");
+    }
+
+    final List routesBody = _decoder.convert(jsonBody);
+    //final List contacts = contactsBody['results'];
+
+    return routesBody.map((route) => new BusRoute.fromJson(route)).toList();
   }
 
   @override

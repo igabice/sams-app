@@ -11,6 +11,10 @@ class NetworkService {
     return http.get(apiUrl);
   }
 
+  Future<Response> authorizedGet(String apiUrl, String token) async {
+    return http.get(apiUrl, headers: {HttpHeaders.authorizationHeader: "Bearer "+token});
+  }
+
   Future<Response> post(String _apiBaseUrl, dynamic data) {
     return http.post(_apiBaseUrl, body: data);
   }
