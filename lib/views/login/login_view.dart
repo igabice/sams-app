@@ -109,6 +109,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
   }
 
   Widget createSignInButton(BuildContext context) {
+    var LOGIN;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
       width: double.infinity,
@@ -124,7 +125,7 @@ class LoginFormState extends State<LoginForm> implements LoginContract {
                             colors: <Color>[AppColors.green, AppColors.lightGreen],
                           ),
                         child: Text(
-                              AppStrings().login,
+                              AppStrings.LOGIN,
                               style: Style.bigButtonTextStyle,
                             ),
                         ),

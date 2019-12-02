@@ -107,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> implements ProfileContrac
                 child: Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
-                AppStrings().editProfile,
+                AppStrings.EDIT_PROFILE,
                 style: 
                 TextStyle(
                 color: Colors.grey,

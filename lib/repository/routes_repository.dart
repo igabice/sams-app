@@ -16,6 +16,7 @@ abstract class RoutesRepository {
   
   Future<List<User>> fetchUsers(int page);
   Future<List<BusRoute>> fetchRoutes();
+  Future<List<User>> fetchRoutesStudents(int routeId);
 
 }
 
@@ -54,11 +55,27 @@ class RoutesRepositoryImpl implements RoutesRepository {
     if (statusCode != 200 || null == statusCode) {
       throw new RequestException( "Cannnot fecth data, code: $statusCode, ${response.reasonPhrase}");
     }
-
     final List routesBody = _decoder.convert(jsonBody);
     //final List contacts = contactsBody['results'];
 
     return routesBody.map((route) => new BusRoute.fromJson(route)).toList();
+  }
+
+  
+  @override
+  Future<List<User>> fetchRoutesStudents(int routeId) async {
+    String token = await Preferences.getToken();
+    final response = await http.get(ApiEndPoint.BUSES+"/$routeId/students", headers: {HttpHeaders.authorizationHeader: "Bearer $token"});
+    var statusCode = response.statusCode;
+    var jsonBody = response.body;
+
+    if (statusCode != 200 || null == statusCode) {
+      throw new RequestException( "Cannnot fecth data, code: $statusCode, ${response.reasonPhrase}");
+    }
+
+    final List routesBody = _decoder.convert(jsonBody);
+    //final List contacts = contactsBody['results'];
+    return routesBody.map((route) => new User.fromRouteJson(route['student'])).toList();
   }
 
 

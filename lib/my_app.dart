@@ -3,6 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flushbar/flushbar.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sc_app/styles/app_colors.dart';
 import 'package:sc_app/styles/styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,6 +38,15 @@ Future checkConnectivity(BuildContext context) async {
   } on SocketException catch (_){
     this.showToast("Connection Error", "Please check your internet connection.", context, color: Colors.red);
   }
+}
+
+Widget backButton(context){
+  return GestureDetector(
+        onTap: (){
+                  Navigator.of(context).pop();
+                },
+                child: Icon( FontAwesomeIcons.arrowLeft),
+      );
 }
 
   void startPage(ctx, page){

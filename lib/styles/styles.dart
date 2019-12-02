@@ -5,6 +5,18 @@ class Style {
   static final baseTextStyle = const TextStyle(fontFamily: 'Raleway', color: Colors.black,
           fontWeight: FontWeight.bold,);
 
+static final smallGreyTextStyle = baseTextStyle.copyWith(
+       color: Colors.grey, fontSize: 10.0,
+);
+
+static final bigTextStyle = baseTextStyle.copyWith(
+               fontSize: 30.0, fontFamily: 'WorkSansMedium'
+);
+
+static final mediumButtonStyle = baseTextStyle.copyWith(
+  color: Colors.white, fontSize: 15.0,
+);
+
   static final smallTextStyle = baseTextStyle.copyWith(
     fontSize: 12.0,
   );

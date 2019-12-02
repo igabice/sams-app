@@ -37,6 +37,24 @@ class User {
     token = ttoken;
   }
 
+
+  User.fromRouteJson(Map<String, dynamic> json) {
+    id = json['id'];
+    address = json['address'];
+    isActive = json['active'] ;
+    title = json['title'];
+    name = json['name'];
+    lastname = json['lastname'];
+    othername = json['othername'];
+    email = json['email'];
+    phone = json['phone'];
+    image = json['image'];
+    schoolId = json['school_id'];
+    roleId = json['role_id'];
+    activeClass = json['active_class'];
+    dateOfBirth = json['dob'];
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;

@@ -10,18 +10,18 @@ class RouteDetailPresenter {
     _routeRepository = RoutesRepositoryImpl();
   }
 
-  void loadRoutes() {
-    // print("loadUsers: ");
+  // void loadStudents(int routeId) {
+  //    print("loadStudents: started");
 
-    // if (null == _view) return;
+  //   if (null == _view) return;
 
-    // _routeRepository
-    //     .fetchRoutes()
-    //     .then((route) => _view.onRoutesReceived(route))
-    //     .catchError((onError) {
-    //   print(onError);
-    //   _view.showError(onError.toString());
-    // });
-  }
+  //   _routeRepository
+  //       .fetchRoutesStudents(routeId)
+  //       .then((students) => _view.onStudentsReceived(students))
+  //       .catchError((onError) {
+  //     print(onError);
+  //     _view.showError(onError.toString());
+  //   });
+  // }
 }
 

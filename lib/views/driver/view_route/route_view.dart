@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_easyrefresh/material_footer.dart';
+import 'package:sc_app/constants/routing_constant.dart';
 import 'package:sc_app/model/BusRoute.dart';
 import 'package:sc_app/my_app.dart';
 import 'package:sc_app/styles/app_colors.dart';
@@ -35,13 +36,13 @@ class _BusRouteViewState extends State<BusRouteView> with AutomaticKeepAliveClie
       return new Card(
         margin: EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0),   ),
-        elevation:3,
+        elevation:7,
         child: 
         Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               child: ListTile(
                     onTap: (){
-
+                      Navigator.pushNamed(context, RouteConstant.ROUTE_DETAIL, arguments: route);
                     },
                     contentPadding: EdgeInsets.symmetric(vertical: 5),
                     leading: CircleAvatar(child: Text(route.name.substring(0,1)),),

@@ -55,7 +55,7 @@ class SplashState extends State<Splash> {
               color: Colors.white,
             ),
             Text(
-                AppStrings().appName,
+                AppStrings.APP_NAME,
                 style: Style.appNameTextStyle,
               ),
             
